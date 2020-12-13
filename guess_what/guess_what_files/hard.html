@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en-in'>
+<head>
+	<title>Guess what | MGW | Easy</title>
+	<meta charset="utf-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<style type="text/css">
+		*{
+			background:#000000;
+			color:white;
+			text-align:center;
+		}
+		header{
+			display:flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		h1{
+			font-size:5vw;
+			color:white;
+		}
+		#box{
+			display:inline-block;
+			text-align:center;
+			border:1px solid lightgreen;
+			padding:5%;
+			width:50vw;
+			border-radius:5px;
+		}
+		input{
+			text-align:left;
+		}
+		label{
+			text-align:left;
+		}
+		#retry{
+			display:none;
+			border:1px solid lightgrey;
+			background:white;
+			color:black;
+			text-decoration:none;
+			border-radius:5px;
+			width: 60%;
+			height:40px;
+			font-size:125%;
+			line-height: 40px;
+		}
+		#btn_submit{
+			border:1px solid lightgrey;
+			background:white;
+			color:black;
+			text-decoration:none;
+			border-radius:5px;
+			width: 60%;
+			height:40px;
+			display:inline-block;
+			font-size:125%;
+		}
+		#questions{
+			font-size:175%;
+		}
+		#choices{
+			font-size:150%;
+			text-align:left;
+			margin-left:25%;
+		}
+		#board{
+			font-size:150%;
+		}
+		.material-icons{
+			width:100px;
+			height:auto;
+			padding:5%;
+			font-size:250%;
+		}
+		.material-icons:hover{
+			color:lightgrey;
+		}
+		@media only screen and (max-width:480px){
+			#box{
+				font-size:.75em;
+			}
+			#questions{
+				text-align:left;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<hr>
+	<header>
+		<a href="play_game.html"title="Choose difficulty"><i class="material-icons">keyboard_arrow_left</i></a>
+		<h1>Guess what?</h1>
+		<a href="../guess_what.html"title="back to home page"><i class='material-icons'>home</i></a>
+	</header>
+	<hr>
+	
+	<div id="box">
+		<p id="questions"></p>
+		<p id="choices"></p>
+		<p id="board"></p>
+		<a href="hard.html"id="retry">Retry quiz</a>
+		<button onclick='check_answer()' id='btn_submit'>Submit</button>
+	</div>
+	<script type="text/javascript">
+		
+		var q_no = 0, score = 0, selected;
+		var container = [
+			["1. Which sea creature has three hearts?", "Octopus", "Blue whale", "a"],
+			["2. What is the only bird that can hover in the air and also ﬂy backwards?", "Humming bird", "sparrow", "a"],
+			["3. What is the top speed of cheetah?", "79mph", "61mph", "b"],
+			["4. Bulls got irritated on seeing red color because", "It hates red color", "It is color blinded for red color", "b"],
+			["5. Humans can outrun any animal while running long distances?", "True", "False", "a"],
+			["6. What is the maximum thickness of carrom coin", "1cm / 10mm", "0.9cm / 9mm", "b"],
+			["7. What is the nationality of the founder of pubg", "Irish", "Ireland", "a"],
+			["8. Which is the tallest animal in the world", "Giraffe", "camel", "a"],
+			["9. where does united nations organisation located?", "Washington", "New York", "b"],
+			["10. what is the height of eifiel tower", "381", "324", "b"],
+		];
+
+		function drawEverything(){
+			if (q_no>=container.length){
+			document.getElementById('questions').innerHTML = "Quiz completed";
+			document.getElementById("choices").innerHTML = "";
+			document.getElementById('board').innerHTML = "you scored" + " " + score + " " + "/	" + " " + container.length;
+			document.getElementById('btn_submit').style.display = "none";
+			document.getElementById('retry').style.display = 'inline-block';
+			}
+			else{
+				var questions = container[q_no][0];
+				var opt1 = container[q_no][1];
+				var opt2 = container[q_no][2];
+				var crt_ans = container[q_no][3];
+				document.getElementById('questions').innerHTML = questions;
+				document.getElementById("choices").innerHTML = "<label><input type='radio'name='selection'value='a'>"+opt1 + '</label><br>' + "<label><input type='radio'name='selection'value='b'>"+opt2+"</label>";
+			}
+		}
+		
+		drawEverything();
+
+		function check_answer(){
+			var options = document.getElementsByName("selection");
+			for(var i=0; i<options.length;i++){
+				if (options[i].checked){
+					selected = options[i].value;
+				}
+			}
+			if(selected == container[q_no][3]){
+				score++;
+			}
+			q_no++;
+			drawEverything();
+		}
+
+	</script>
+</body>
+</html>

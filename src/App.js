@@ -1,25 +1,24 @@
-import logo from './logo.png';
-import './App.css';
+import logo from './assets/logo.png';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to <code>Part Time Gamer's</code> portfolio.
-        </p>
-        <a
-          className="App-link"
-          href="https://linktr.ee/parttimegamer"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Get our social media links
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+	return (
+		<div>
+			<div className='section'>
+				<div>
+					<img src={logo} alt='logo' id='logo' />
+					<h1>Part Time Gamer</h1>
+				</div>
+				<div>
+					<div className='container'>
+						<p>
+							Welcome to Part Time Gamer's portfolio.
+						</p>
+						<a href="https://linktr.ee/parttimegamer" target="_blank">
+							Get our social media links
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
-
-export default App;

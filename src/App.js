@@ -16,6 +16,9 @@ export default function App() {
 						<a href="https://linktr.ee/parttimegamer" target="_blank">
 							Get our social media links
 						</a>
+						<script src="https://apis.google.com/js/platform.js"></script>
+
+<div class="g-ytsubscribe" data-channelid="UCpVpFXghAoVfLqresV_kTSQ" data-layout="full" data-count="default"></div>
 					</div>
 				</div>
 			</div>
